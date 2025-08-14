@@ -7,15 +7,23 @@
 */
 
 class Solution {
+    public int getLength(Node head){
+        int length=0;
+        while(head!=null){
+            length++;
+            head=head.next;
+        }
+        return length;
+    }
     int getMiddle(Node head) {
         // Your code here.
-        ArrayList<Integer> list = new ArrayList<>();
-        Node current = head;
-        while(current!=null){
-            list.add(current.data);
-            current=current.next;
+        int length=getLength(head);
+        int mididx = length/2;
+        while(mididx>0){
+            head=head.next;
+            mididx--;
         }
-        int mididx=list.size()/2;
-        return list.get(mididx);
+        return head.data;
+        
       }
 }
