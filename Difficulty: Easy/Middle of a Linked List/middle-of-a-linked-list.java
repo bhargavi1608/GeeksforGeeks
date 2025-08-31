@@ -1,29 +1,25 @@
-/* Node of a linked list
- class Node {
-   int data;
+/*
+class Node {
+    int data;
     Node next;
-    Node(int d)  { data = d;  next = null; }
-}
-*/
+
+    Node(int x) {
+        data = x;
+        next = null;
+    }
+} */
 
 class Solution {
-    public int getLength(Node head){
-        int length=0;
-        while(head!=null){
-            length++;
-            head=head.next;
-        }
-        return length;
-    }
     int getMiddle(Node head) {
-        // Your code here.
-        int length=getLength(head);
-        int mididx = length/2;
-        while(mididx>0){
-            head=head.next;
-            mididx--;
+        // code here
+        if(head==null) return -1;
+        Node slow= head;
+        Node fast = head;
+        while(fast!=null && fast.next!=null ){
+            slow= slow.next;
+            fast=fast.next.next;
+            
         }
-        return head.data;
-        
-      }
+        return slow.data;
+    }
 }
