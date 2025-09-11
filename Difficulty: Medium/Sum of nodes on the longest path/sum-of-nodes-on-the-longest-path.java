@@ -8,35 +8,25 @@ class Node {
     }
 } */
 class Solution {
-     class Pair{
-        int v;
-        int d;
-        Pair(int d, int v){
-            this.v=v;
-            this.d=d;
-        }
-     }
     public int sumOfLongRootToLeafPath(Node root) {
         // code here
-        return f(root,0).v;
-
+        if(root==null) return 0;
+        if(root.left==null && root.right==null) return root.data;
+        
+        int leftLen=getLength(root.left);
+        int rightLen=getLength(root.right);
+        if(leftLen>rightLen){
+            return root.data +  sumOfLongRootToLeafPath(root.left);
+        }else if(rightLen>leftLen){
+            return root.data +  sumOfLongRootToLeafPath(root.right);
+        }else{
+            return root.data +  Math.max(sumOfLongRootToLeafPath(root.left), sumOfLongRootToLeafPath(root.right));
+        }
+        
         
     }
-     Pair f(Node root, int level){
-        if(root==null){
-            return new Pair(level,0);
-        }
-        Pair left=f(root.left,level+1);
-        Pair right=f(root.right,level+1);
-        if(left.d>right.d){
-            left.v+=root.data;
-            return left;
-        }else if(left.d<right.d){
-            right.v+=root.data;
-            return right;
-        }else{
-            return new Pair(left.d,Math.max(left.v,right.v)+root.data);
-        }
-
+    private int getLength(Node root){
+        if(root==null) return 0;
+        return 1+Math.max(getLength(root.left),getLength(root.right));
     }
 }
