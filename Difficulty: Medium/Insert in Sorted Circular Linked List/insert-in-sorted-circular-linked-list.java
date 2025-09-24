@@ -13,21 +13,25 @@ class Solution {
     public Node sortedInsert(Node head, int data) {
         // code here
         Node newNode = new Node(data);
-        Node temp = head;
-        if(newNode.data<head.data){
-            newNode.next=head;
-            while(temp.next!=head){
-                temp=temp.next;
-            }
-            temp.next=newNode;
+        if(head==null){
+            newNode.next=newNode;
             return newNode;
         }
-        Node current = head;
-        while(temp.next!=head && temp.next.data<=data){
-            temp=temp.next;
+        Node curr=head;
+        if(data<=head.data){
+            newNode.next=head;
+            while(curr.next!=head){
+                curr=curr.next;
+            }
+            curr.next=newNode;
+            return newNode;
         }
-        newNode.next = temp.next;
-        temp.next=newNode;
+        while(curr.next!=head && curr.next.data<data){
+            curr=curr.next;
+        }
+        newNode.next=curr.next;
+        curr.next=newNode;
         return head;
+        
     }
 }
