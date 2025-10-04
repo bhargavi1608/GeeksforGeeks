@@ -1,18 +1,18 @@
-//Back-end complete function Template for Java
-import java.util.*;
+// User function Template for Java
 
-public class Solution {
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-       int count=0;
-       n=Math.abs(n);
-       if(n==0) System.out.println(-1);
-       while(n>0){
-           n/=10;
-           count++;
-       }
-       System.out.println(count);
-       
+class Solution {
+    static int evenlyDivides(int n) {
+        // code here
+      return helper(n,n);
+    }
+    private static int helper(int curr_num, int original_num){
+        if(curr_num==0) return 0;
+        
+        int digit = curr_num%10;
+        int count=0;
+        if(digit!=0 && original_num%digit==0){
+            count=1;
+        }
+        return count+ helper(curr_num/10, original_num);
     }
 }
