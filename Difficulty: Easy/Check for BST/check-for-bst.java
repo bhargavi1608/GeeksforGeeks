@@ -13,16 +13,14 @@ class Node {
 
 class Solution {
     // Function to check whether a Binary Tree is BST or not.
-    boolean check(Node root,int min,int max){
-        if(root==null) return true;
-        if(root.data>max || root.data<min) return false;
-        return check(root.left,min,root.data) && check(root.right,root.data,max);
-    }
     boolean isBST(Node root) {
         // code here.
-        return check(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
-        
-    
-   
+       return checkBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+       
+    }
+    private boolean checkBST(Node node, int min, int max){
+        if(node==null) return true;
+        if(node.data<=min || node.data>=max) return false;
+        return checkBST(node.left,min,node.data) && checkBST(node.right,node.data,max);
     }
 }
