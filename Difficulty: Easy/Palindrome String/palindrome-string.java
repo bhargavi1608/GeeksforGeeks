@@ -1,18 +1,12 @@
 class Solution {
     boolean isPalindrome(String s) {
         // code here
-        
-        char[] st=s.toCharArray();
-        int left=0;
-        int right=st.length-1;
-        while(left<=right){
-            if(st[left]!=st[right]){
-                return false;
-                
-            }
-            left++;
-            right--;
-        }
-        return true;
+        return checkpalin(s,0,s.length()-1);
     }
+    boolean checkpalin(String s,int start, int end){
+        if(start>=end) return true;
+        if(s.charAt(start)!=s.charAt(end)) return false;
+        return checkpalin(s,start+1,end-1);
+    }
+    
 }
