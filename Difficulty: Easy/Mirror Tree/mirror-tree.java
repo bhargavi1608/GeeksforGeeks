@@ -13,17 +13,12 @@ class Node
 class Solution {
     void mirror(Node node) {
         // code here
-        if(node==null){
-            return;
-        }
-        //swap the left and right 
+        if(node==null) return;
         Node temp = node.left;
-        node.left = node.right;
-        node.right = temp;
-        // recursively for left and right subtree
+        node.left=node.right;
+        node.right=temp;
         
         mirror(node.left);
         mirror(node.right);
-        
     }
 }
