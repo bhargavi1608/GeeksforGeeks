@@ -15,29 +15,31 @@ class Tree {
     ArrayList<Integer> noSibling(Node node) {
         // code here
         ArrayList<Integer> res = new ArrayList<>();
-        if(node==null) {
-            res.add(-1);
+        if(node==null){
+            res.add(-1); 
             return res;
-        }
+        } 
         Stack<Node> s = new Stack<>();
         s.push(node);
         while(!s.isEmpty()){
-            Node curr = s.pop();
-            if(curr.left!=null && curr.right==null){
-                res.add(curr.left.data);
-            }else if(curr.left==null && curr.right!=null){
-                res.add(curr.right.data);
+            Node current = s.pop();
+            if(current.left!=null && current.right==null){
+                res.add(current.left.data);
             }
-            if(curr.left!=null){
-                s.push(curr.left);
+            if(current.left==null && current.right!=null){
+                res.add(current.right.data);
             }
-            if(curr.right!=null){
-                s.push(curr.right);
+            if(current.left!=null){
+                s.push(current.left);
+            }
+            if(current.right!=null){
+                s.push(current.right);
             }
         }
         if(res.isEmpty()){
             res.add(-1);
             return res;
+            
         }
         Collections.sort(res);
         return res;
