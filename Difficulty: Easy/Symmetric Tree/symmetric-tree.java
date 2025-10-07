@@ -9,27 +9,19 @@ class Node{
         right=null;
     }
 }
-
 */
+
 class Solution {
-     private boolean Ismirror(Node node1, Node node2) {
-        // code here
-        if(node1==null && node2==null){
-            return true;
-        }
-        if(node1==null || node2==null){
-            return false;
-        }
-        return(node1.data==node2.data) && Ismirror(node1.left,node2.right) && Ismirror(node1.right,node2.left);
-       
-        
-    }
     public boolean isSymmetric(Node root) {
-        // Code here
-        if(root==null){
-            return true;
-        }
-        return Ismirror(root.left,root.right);
-        
+        // code here
+        if(root==null) return true;
+        return isMirror(root.left,root.right);
     }
+    private boolean isMirror(Node root1,Node root2){
+        if(root1==null && root2==null) return true;
+         if(root1==null || root2==null) return false;
+         if(root1.data!=root2.data) return false;
+         return isMirror(root1.left,root2.right) && isMirror(root1.right,root2.left);
+    }
+    
 }
