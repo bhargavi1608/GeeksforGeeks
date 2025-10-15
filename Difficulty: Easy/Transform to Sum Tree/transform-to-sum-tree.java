@@ -1,3 +1,5 @@
+// User function template for JAVA
+
 /*Complete the Given Function
 
 Node is as follows:
@@ -13,15 +15,19 @@ class Node{
 
 class Solution {
     public void toSumTree(Node root) {
-        // add code here.if(root==null) return;
+        // add code here.
         convert(root);
+        
     }
-    int convert(Node root){
+    public int convert(Node root){
         if(root==null) return 0;
         int leftSum = convert(root.left);
-        int rightSum = convert(root.right);
-        int oldVal = root.data;
-        root.data = leftSum+rightSum;
-        return oldVal+root.data;
+        int RightSum = convert(root.right);
+        
+        int OldValue = root.data;
+        
+        root.data = leftSum+RightSum;
+        return root.data+OldValue;
+        
     }
 }
