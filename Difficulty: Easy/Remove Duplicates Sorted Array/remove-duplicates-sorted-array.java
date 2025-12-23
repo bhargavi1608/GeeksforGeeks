@@ -2,14 +2,13 @@ class Solution {
     // Function to remove duplicates from the given array.
     ArrayList<Integer> removeDuplicates(int[] arr) {
         // code here
-      
-        ArrayList<Integer> result = new ArrayList<>();
-        Set<Integer> set = new HashSet<>();
-        for(int num:arr){
-            set.add(num);
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(arr[0]);
+        for(int i=1;i<arr.length;i++){
+            if(arr[i-1]!=arr[i]){
+                list.add(arr[i]);
+            }
         }
-        result.addAll(set);
-        Collections.sort(result);
-        return result;
+        return list;
     }
 }
