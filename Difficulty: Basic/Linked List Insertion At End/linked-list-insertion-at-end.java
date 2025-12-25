@@ -13,17 +13,15 @@ class Solution {
     public Node insertAtEnd(Node head, int x) {
         // code here
         Node newNode = new Node(x);
-        newNode.next=null;
-        if(head==null){
+        Node temp=head;
+        if (head == null) {
             return newNode;
         }
-        Node temp = head;
+
         while(temp.next!=null){
             temp=temp.next;
-            
         }
         temp.next=newNode;
-        
         return head;
     }
 }
