@@ -15,10 +15,10 @@ class Solution {
     public Node flatten(Node root) {
         // code here
         if(root==null || root.next==null) return root;
-        root.next=flatten(root.next);
+        
+        root.next = flatten(root.next);
         root=merge(root,root.next);
         return root;
-        
     }
     Node merge(Node a,Node b){
         if(a==null) return b;
@@ -26,10 +26,12 @@ class Solution {
         Node result;
         if(a.data<b.data){
             result=a;
-            result.bottom=merge(a.bottom,b);
-        }else{
+            result.bottom = merge(a.bottom,b);
+        }
+        else{
             result=b;
             result.bottom = merge(a,b.bottom);
+            
         }
         result.next=null;
         return result;
