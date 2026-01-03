@@ -1,21 +1,21 @@
 class Solution {
     public int binarysearch(int[] arr, int k) {
         // Code Here
-        int result = -1;
-        int low=0;
-        int high = arr.length-1;
-        while(low<=high){
-            int mid = low+(high-low)/2;
-            if(arr[mid]==k){
-                result=mid;
-                high=mid-1;
-            }else if(arr[mid]>k){
-                high=mid-1;
-            }else{
-                low=mid+1;
-            }
-        }
-        return result;
-        
+        return search(arr,k,0,arr.length-1);
     }
+    public int search(int[] arr, int k, int low, int high){
+        if(low>high){
+            return -1;
+        }
+        int mid = low+(high-low)/2;
+        if(arr[mid]==k){
+            int left = search(arr,k,low,mid-1);
+            return left ==-1? mid :left;
+        }
+        if(arr[mid]<k){
+            return search(arr,k,mid+1,high);
+        }
+        return search(arr,k,low,mid-1);
+    }
+    
 }
