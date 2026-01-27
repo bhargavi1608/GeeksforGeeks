@@ -1,6 +1,7 @@
 
 class Solution {
     static ArrayList<Integer> subarraySum(int[] arr, int target) {
+        // code here
       ArrayList<Integer> res = new ArrayList<>();
       int start=0;
       int end=0;
@@ -27,5 +28,6 @@ class Solution {
         res.add(-1);
     }
     return res;
+    
     }
 }
