@@ -1,22 +1,21 @@
 class Solution {
     public ArrayList<Integer> nextLargerElement(int[] arr) {
-        ArrayList<Integer> res = new ArrayList<>();
         // code here
-        Stack<Integer> stack = new Stack<>();
-        int n = arr.length;
-        for(int i=0;i<n;i++){
-            res.add(-1);
-        }
-        for(int i=n-1;i>=0;i--){
-            while(!stack.isEmpty() && stack.peek()<=arr[i]){
-                stack.pop();
+        ArrayList<Integer> res = new ArrayList<>();
+        Stack<Integer> s = new Stack<>();
+        for(int i=arr.length-1;i>=0;i--){
+            while(!s.isEmpty() && s.peek()<=arr[i]){
+                s.pop();
             }
-            if(!stack.isEmpty()){
-                res.set(i,stack.peek());
+            if(s.isEmpty()){
+                res.add(-1);
+            }else{
+                res.add(s.peek());
             }
-            stack.push(arr[i]);
+           s.push(arr[i]);
+            
         }
+        Collections.reverse(res);
         return res;
-        
     }
 }
